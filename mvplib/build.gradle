@@ -6,9 +6,9 @@ android {
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 27
+        versionCode 3
+        versionName "1.0.2"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -23,15 +23,9 @@ android {
 
 }
 
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    api 'com.lixiaomi:baselib:1.0.3'
-}
-
-
 
 ext {
-    baseLib = "1.0.3"
+    baseLib = "1.0.5"
 }
 
 dependencies {
@@ -49,14 +43,15 @@ install {
         pom {
             project {
                 packaging 'aar'
-                name 'Android BaseLib Application.'
-                url 'https://github.com/LiQinglin007/BaseLibApplication'
+                name 'Android MVPBaseLib Application.'
+                url 'https://github.com/LiQinglin007/MVPBaseLibApplication'
                 licenses {
                     license {
-                        name 'Android BaseLib Application.'
-                        url 'https://github.com/LiQinglin007/BaseLibApplication'
+                        name 'Android MVPBaseLib Application.'
+                        url 'https://github.com/LiQinglin007/MVPBaseLibApplication'
                     }
                 }
+
                 developers {
                     developer {
                         id 'lixiaomi0007'
@@ -65,9 +60,9 @@ install {
                     }
                 }
                 scm {
-                    connection 'https://github.com/LiQinglin007/BaseLibApplication.git'
-                    developerConnection 'https://github.com/LiQinglin007/BaseLibApplication.git'
-                    url 'https://github.com/LiQinglin007/BaseLibApplication'
+                    connection 'https://github.com/LiQinglin007/MVPBaseLibApplication.git'
+                    developerConnection 'https://github.com/LiQinglin007/MVPBaseLibApplication.git'
+                    url 'https://github.com/LiQinglin007/MVPBaseLibApplication'
                 }
                 //这里有引号，并且有个空格，否则生成不了依赖，主要是这里的dependencies并不是build.gradle里的dependencies，而gradle会把他当成自身的dependencies处理
                 dependencies {
@@ -75,7 +70,6 @@ install {
                         groupId "com.lixiaomi"
                         artifactId "baselib"
                         version "$baseLib"
-                        //同dependencies
                     }
                 }
             }
@@ -97,7 +91,7 @@ task javadoc(type: Javadoc) {
     options.charSet 'UTF-8'
     options.author true
     options.version true
-    options.links "https://github.com/linglongxin24/FastDev/tree/master/mylibrary/docs/javadoc"
+    options.links ""
     failOnError false
 }
 
@@ -122,7 +116,7 @@ artifacts {
 //发布到组织名称名字，必须填写
 group = "com.lixiaomi"//groupId
 // 版本号，下次更新是只需要更改版本号即可
-version = "1.0.3"
+version = "1.0.2"
 
 //上传到jcenter
 Properties properties = new Properties()
@@ -132,14 +126,15 @@ bintray {
     key = properties.getProperty("bintray.apikey")   //读取 local.properties 文件里面的 bintray.apikey
     configurations = ['archives']
     pkg {
-        repo = 'AndroidBaseLib'//创建的仓库(Repository)名字
+        repo = 'AndroidBaseLibMVP'//创建的仓库(Repository)名字
         name = 'com.lixiaomi'  //发布到JCenter上的项目名字，必须填写,同groupId
-        desc = 'Android BaseLib Application.'    //项目描述
-        websiteUrl = 'https://github.com/LiQinglin007/BaseLibApplication'
-        vcsUrl = 'https://github.com/LiQinglin007/BaseLibApplication.git'
+        desc = 'Android MVPBaseLib Application.'    //项目描述
+        websiteUrl = 'https://github.com/LiQinglin007/MVPBaseLibApplication'
+        vcsUrl = 'https://github.com/LiQinglin007/MVPBaseLibApplication.git'
         licenses = ["Apache-2.0"]
         publish = true
     }
 }
+
 //gradlew install 用于将项目编译、打包生成 pom，aar 等文件；
 //gradlew bintrayUpload 用于将生成的 pom，aar 等文件上传至 bintray 仓库中；
