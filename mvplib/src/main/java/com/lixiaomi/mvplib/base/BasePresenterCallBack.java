@@ -7,27 +7,26 @@ package com.lixiaomi.mvplib.base;
  * @remarks：<br>
  * @changeTime:<br>
  */
-public interface MyPresenterCallBack {
+public interface BasePresenterCallBack {
     /**
      * 请求成功
      *
-     * @param code
      * @param response
      */
-    void success(int code, String response);
+    void success(String response);
 
     /**
      * 出现错误
      * 在onResponse方法中，例如出现"<html>"等问题，在该方法中返回
+     * 或者请求失败
      *
      * @param message
      */
     void error(String message);
 
+
     /**
-     * 失败
-     *
-     * @param e
+     * 结束
      */
-    void failure(Throwable e);
+    void finish();
 }

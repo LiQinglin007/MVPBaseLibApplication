@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.lixiaomi.baselib.ui.Loading.LoaderStyle;
 import com.lixiaomi.baselib.ui.Loading.XiaomiLoader;
+import com.lixiaomi.baselib.utils.T;
 
 /**
  * @describe：MVP架构fragment基类<br>
@@ -97,6 +98,10 @@ public abstract class BaseFragment<V extends BaseView, P extends BasePresenter> 
     public void startActivityForResult(Intent intent, int requestCode) {
         super.startActivityForResult(intent, requestCode);
         (getActivity()).overridePendingTransition(com.lixiaomi.baselib.R.anim.toleft, com.lixiaomi.baselib.R.anim.infright);
+    }
+
+    protected void showShortToast(String msg) {
+        T.shortToast(getActivity(), msg);
     }
 
     /**

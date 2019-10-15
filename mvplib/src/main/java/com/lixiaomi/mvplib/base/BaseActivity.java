@@ -10,6 +10,7 @@ import com.gyf.barlibrary.ImmersionBar;
 import com.lixiaomi.baselib.ui.Loading.LoaderStyle;
 import com.lixiaomi.baselib.ui.Loading.XiaomiLoader;
 import com.lixiaomi.baselib.utils.BaseAppManager;
+import com.lixiaomi.baselib.utils.T;
 
 /**
  * @describe：MVP架构基础类<br>
@@ -155,6 +156,10 @@ public abstract class BaseActivity<V extends BaseView, P extends BasePresenter> 
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    protected void showShortToast(String msg) {
+        T.shortToast(this, msg);
     }
 
     /**
